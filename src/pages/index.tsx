@@ -18,8 +18,14 @@ export default function Home(): JSX.Element {
     hasNextPage,
   } = useInfiniteQuery(
     'images',
-    // TODO AXIOS REQUEST WITH PARAM
-    ,
+    ({ pageParams = null }) =>
+      api.get('/api/images', {
+        params: { after: pageParams },
+      }),
+    {
+      getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
+    }
+
     // TODO GET AND RETURN NEXT PAGE PARAM
   );
 
