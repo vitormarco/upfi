@@ -9,6 +9,10 @@ import { Loading } from '../components/Loading';
 import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
+  const fetchPhotos = ({ pageParams = null }) =>
+    api.get('/api/images', {
+      params: { after: pageParams },
+    });
   const {
     data,
     isLoading,
@@ -16,18 +20,14 @@ export default function Home(): JSX.Element {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery(
-    'images',
-    ({ pageParams = null }) =>
-      api.get('/api/images', {
-        params: { after: pageParams },
-      }),
-    {
-      getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
-    }
-
-    // TODO GET AND RETURN NEXT PAGE PARAM
-  );
+  } = useInfiniteQuery('images', fetchPhotos, {
+    getNextPageParam: (lastPage, pages) => {
+      console.log('@lastPage');
+      console.log(lastPage, pages);
+      console.log('@pages');
+      console.log(pages);
+    },
+  });
 
   const formattedData = useMemo(() => {
     // TODO FORMAT AND FLAT DATA ARRAY
