@@ -21,21 +21,25 @@ export default function Home(): JSX.Element {
     fetchNextPage,
     hasNextPage,
   } = useInfiniteQuery('images', fetchPhotos, {
-    getNextPageParam: (lastPage, pages) => {
-      console.log('@lastPage');
-      console.log(lastPage, pages);
-      console.log('@pages');
-      console.log(pages);
-    },
+    getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
   });
 
+  console.log(hasNextPage);
   const formattedData = useMemo(() => {
-    // TODO FORMAT AND FLAT DATA ARRAY
+    return data?.pages
+      .map(page => {
+        return page.data.data;
+      })
+      .flat();
   }, [data]);
 
-  // TODO RENDER LOADING SCREEN
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  // TODO RENDER ERROR SCREEN
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <>
