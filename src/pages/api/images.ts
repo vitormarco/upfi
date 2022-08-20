@@ -67,6 +67,7 @@ export default async function handler(
         )
       )
       .then(response => {
+        console.log(JSON.stringify(response, null, 2));
         const formattedData = response.data.map(item => ({
           ...item.data,
           ts: item.ts,
