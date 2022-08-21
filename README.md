@@ -29,7 +29,6 @@ Projeto para praticar o upload de imagens, validação de formulário e estraté
   <img src="./github/users.png" width="50%" alt="Users" />
 </p> -->
 
-
 <a href="https://www.figma.com/file/ouBB2NDgHtDyYAP1ORlXyG/Desafio-2-M%C3%B3dulo-4-ReactJS?node-id=0%3A1">
   <img alt="figma" src="https://img.shields.io/badge/Acessar%20Layout-Figma-FF57B2">
 </a>
@@ -84,5 +83,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - ✔️ [React Query](https://tanstack.com/query/v4/docs/overview)
 
 > Veja o arquivo [package.json](https://github.com/vitormarco/upfi/blob/master/package.json)
+
+## ✅ DoD
+
+- [ ] Atualizar o pacote react query
+- [ ] Verificar erros de TS
 
 Feito com 🧡 por Vítor Marco 👋🏽 [Entre em contato!](https://www.linkedin.com/in/vitor-marco/)
